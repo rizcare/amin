@@ -34,7 +34,38 @@ routes = [
     {
     path: '/fasilitas_kamar/',
     url: './pages/fasilitas-kamar.html',
-    
+  },
+  {
+    path: '/fasiinfodaftar/',
+    url: './pages/fasiinfodaftar.html',
+  },
+  {
+    path: '/fasivip/',
+    url: './pages/fasivip.html',
+  },
+  {
+    path: '/fasibersalin/',
+    url: './pages/fasibersalin.html',
+  },
+  {
+    path: '/fasiperina/',
+    url: './pages/fasiperina.html',
+  },
+  {
+    path: '/fasiradio/',
+    url: './pages/fasiradio.html', 
+  },
+  {
+    path: '/fasilab/',
+    url: './pages/fasilab.html',
+  },
+  {
+    path: '/fasibedah/',
+    url: './pages/fasibedah.html',  
+  },
+  {
+    path: '/fasifarmasi/',
+    url: './pages/fasifarmasi.html',   
   },
   {
     path: '/color-themes/',

@@ -2239,7 +2239,6 @@ $$(document).on('page:init', '.page[data-name="daftar"]', function(e) {
             html += '<li>';
             html += '  <label class="item-radio item-content">';
             html += '    <input type="radio" class="kd_dokter" name="kd_dokter" value="' + data[i]['kd_dokter'] + '" ' + attrStr + '>';
-			html += '    <input type="radio" class="kd_poli" name="kd_poli" value="' + data[i]['nm_poli'] + '" ' + attrStr + '>';
             html += '    <i class="icon icon-radio"></i>';
             html += '    <div class="item-inner">';
             html += '      <div class="item-title">' + data[i]['nm_dokter'] + '</div>';

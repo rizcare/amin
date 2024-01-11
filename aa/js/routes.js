@@ -68,6 +68,14 @@ routes = [
     url: './pages/fasifarmasi.html',   
   },
   {
+    path: '/fasiigd/',
+    url: './pages/fasiigd.html',   
+  },
+  {
+    path: '/fasiponek',
+    url: './pages/fasiponek.html',   
+  },
+  {
     path: '/color-themes/',
     componentUrl: './pages/color-themes.html',
   },

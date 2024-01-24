@@ -1,8 +1,8 @@
 //Main configuration. Silahkan sesuaikan settingan dibawah ini sesuai. Baca komentar dibelakangnya
 const nama_instansi = 'RS MITRA HUSADA KUNINGAN'; // Hospital Name
-const apiUrl = 'http://36.64.204.210/mitra/api/'; // API Server URL
-const website_upload = 'http://36.64.204.210/mitra/uploads/'; // Website Uploads Server URL
-const webapps_url = 'http://36.64.204.210/mitra/webapps/'; // Webapps Server URL
+const apiUrl = 'http://127.0.0.1/mitra/api/'; // API Server URL
+const website_upload = 'http://127.0.0.1/mitra/uploads/'; // Website Uploads Server URL
+const webapps_url = 'http://127.0.0.1/mitra/webapps/'; // Webapps Server URL
 const token = 'qtbexUAxzqO3M8dCOo2vDMFvgYjdUEdMLVo341'; // Token code for security purpose
 const startDate = -1; // Start date of day for registration
 const endDate = 7; // End date of day for registration
@@ -108,12 +108,12 @@ if (debug == '1') {
       var page = app.views.main.router.currentPageEl.dataset.name;
       app.dialog.close();
       if (page === 'landing') {
-        app.dialog.confirm('Anda yakin ingin menutup aplikasi APAM?', function () {
+        app.dialog.confirm('Anda yakin ingin menutup aplikasi?', function () {
           navigator.app.clearHistory();
           navigator.app.exitApp();
         })
       } else if (page === 'home') {
-        app.dialog.confirm('Anda yakin ingin menutup aplikasi APAM?', function () {
+        app.dialog.confirm('Anda yakin ingin menutup aplikasi?', function () {
           navigator.app.clearHistory();
           navigator.app.exitApp();
         })
@@ -335,6 +335,8 @@ $$(document).on('page:init', '.page[data-name="postregister"]', function(e) {
       var tgl_lahir = $$('#postregister-form .tgl_lahir').val();
       var alamat = $$('#postregister-form .alamat').val();
       var jk = $$('#postregister-form .jk').val();
+	  var kd_pj = $$('#postregister-form .kd_pj').val();
+	  var no_peserta = $$('#postregister-form .no_peserta').val();
 
       if(kode_validasi == localStorage.getItem("kode_validasi")) {
         app.dialog.preloader("Menghubungkan ke server...");
@@ -348,6 +350,8 @@ $$(document).on('page:init', '.page[data-name="postregister"]', function(e) {
           tgl_lahir: tgl_lahir,
           alamat: alamat,
           jk: jk,
+		  kd_pj: kd_pj,
+		  no_peserta: no_peserta,
           token: token
         }, function (data) {
           console.log(data);
@@ -1287,6 +1291,16 @@ $$(document).on('page:init', '.page[data-name="bookingdetail"]', function(e) {
       html += '   </div>';
       html += '  </div>';
       html += ' </div>';
+	  
+	  	  if(data[i]['status'] == "Belum"){
+		  $$("button.batalbooking-btn").attr("data_no_rkm_medis",no_rkm_medis);
+		  $$("button.batalbooking-btn").attr("data_no_reg",data[i]['no_reg']);
+		  $$("button.batalbooking-btn").attr("data_tanggal_periksa",data[i]['tanggal_periksa']);
+	  }
+	  else{
+		  $$("button.batalbooking-btn").hide();
+	  }
+	  
     }
 
     $$(".booking-detail").html(html);
@@ -1382,7 +1396,7 @@ $$(document).on('page:init', '.page[data-name="dokter"]', function(e) {
               html += '    <div class="item" style="font-size: 15px;font-weight: bold;color: var(--f7-theme-color);">' + data[i]['nm_poli'] + '</div>';
               html += '    <div style="font-size: min(14px);color: var(--f7-theme-color);">' + data[i]['nm_dokter'] + '</div>';
               html += '    <div style="font-size:12px;">'+ data[i]['jam_mulai'] + ' s/d ' + data[i]['jam_selesai'] + ' WIB</div>';
-              //html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';  
+              html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';  
               html += '   </div>';
               html += '  </div>';
               html += ' </div>';
@@ -1422,7 +1436,7 @@ $$(document).on('page:init', '.page[data-name="dokter"]', function(e) {
         html += '    <div class="item" style="font-size: 15px;font-weight: bold;color: var(--f7-theme-color);">' + data[i]['nm_poli'] + '</div>';
         html += '    <div style="font-size: min(14px); color: var(--f7-theme-color);">' + data[i]['nm_dokter'] + '</div>';
         html += '    <div style="font-size:12px;">'+ data[i]['jam_mulai'] + ' s/d ' + data[i]['jam_selesai'] + ' WIB</div>';
-        //html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';        
+        html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';        
         html += '   </div>';
         html += '  </div>';
         html += ' </div>';
@@ -2130,6 +2144,7 @@ $$(document).on('page:init', '.page[data-name="profil"]', function(e) {
 
 });
 
+
 //=================================================//
 // Load data untuk halaman daftar.html               //
 //=================================================//
@@ -2228,6 +2243,9 @@ $$(document).on('page:init', '.page[data-name="daftar"]', function(e) {
         }, function (data) {
           app.dialog.close();
           data = JSON.parse(data);
+
+
+console.log(data);
 
           var html = '';
           var attrStr = '';
@@ -2775,6 +2793,32 @@ $$('.logout-btn').on('click', function () {
     //localStorage.removeItem("color");
     mainView.router.navigate('/', {
       clearPreviousHistory: true
+    });
+  });
+});
+
+$$(document).on('page:init', '.page[data-name="bookingdetail"]', function(e) {
+  $$('.batalbooking-btn').on('click', function () {
+	 var no_rkm_medis = $$(this).attr( "data_no_rkm_medis" );
+	 var tanggal_periksa = $$(this).attr( "data_tanggal_periksa" );
+	 var no_reg = $$(this).attr( "data_no_reg" );
+    app.dialog.confirm('Anda yakin ingin membatalkan booking ?', function () {
+	app.request.post(apiUrl + 'apam/', {
+		action: "delete_bookingdetail",
+		no_rkm_medis: no_rkm_medis,
+		tanggal_periksa: tanggal_periksa,
+		no_reg: no_reg,
+		token: token
+	  }, function (data) {
+		  app.dialog.alert('Booking telah dihapus');
+		  app.views.main.router.back('/booking/', {
+              ignoreCache: true,
+              force: true,
+              context: {}
+            });
+		  
+		  
+	  });
     });
   });
 });

@@ -1396,7 +1396,7 @@ $$(document).on('page:init', '.page[data-name="dokter"]', function(e) {
               html += '    <div class="item" style="font-size: 15px;font-weight: bold;color: var(--f7-theme-color);">' + data[i]['nm_poli'] + '</div>';
               html += '    <div style="font-size: min(14px);color: var(--f7-theme-color);">' + data[i]['nm_dokter'] + '</div>';
               html += '    <div style="font-size:12px;">'+ data[i]['jam_mulai'] + ' s/d ' + data[i]['jam_selesai'] + ' WIB</div>';
-              html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';  
+              //html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';  
               html += '   </div>';
               html += '  </div>';
               html += ' </div>';
@@ -1436,7 +1436,7 @@ $$(document).on('page:init', '.page[data-name="dokter"]', function(e) {
         html += '    <div class="item" style="font-size: 15px;font-weight: bold;color: var(--f7-theme-color);">' + data[i]['nm_poli'] + '</div>';
         html += '    <div style="font-size: min(14px); color: var(--f7-theme-color);">' + data[i]['nm_dokter'] + '</div>';
         html += '    <div style="font-size:12px;">'+ data[i]['jam_mulai'] + ' s/d ' + data[i]['jam_selesai'] + ' WIB</div>';
-        html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';        
+        //html += '    <div style="font-size:12px;">Kuota : ' + data[i]['kuota']+'</div>';        
         html += '   </div>';
         html += '  </div>';
         html += ' </div>';

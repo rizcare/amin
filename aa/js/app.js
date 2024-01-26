@@ -2224,7 +2224,7 @@ $$(document).on('page:init', '.page[data-name="daftar"]', function(e) {
         var html = '';
         html += '<option class="kd_poli" value="" selected>____Pilih Klinik____</option>';
         for(i=0; i<data.length; i++) {
-          html += '<option class="kd_poli" value="' + data[i]['kd_poli'] + '">' + data[i]['nm_poli'] + ' [' + data[i]['jam_mulai'] + ' - ' + data[i]['jam_selesai'] + ']</option>';
+          html += '<option class="kd_poli" value="' + data[i]['kd_poli'] + '">' + data[i]['nm_poli'] + '</option>';
         }
 
         $$(".klinik-list").html(html);

@@ -1900,7 +1900,7 @@ $$(document).on('page:init', '.page[data-name="riwayatranap-detail"]', function(
       html += '   <li>';
       html += '    <div class="item-content">';
       html += '     <div class="item-inner">';
-      html += '      <div class="item-title">Bangsal/Kamar</div>';
+      html += '      <div class="item-title">Kamar</div>';
       html += '      <div class="item-after">' + data[i]['nm_bangsal'] + '</div>';
       html += '     </div>';
       html += '    </div>';
@@ -1923,49 +1923,6 @@ $$(document).on('page:init', '.page[data-name="riwayatranap-detail"]', function(
       html += '   </li>';
       html += '  </ul>';
       html += ' </div>';
-      html += '</div>';
-
-      html += '<div class="block-title">Pemeriksaan</div>';
-      html += '<div class="card padding">';
-      html += '  <div class="card-content">Keluhan: ' + data[i]['keluhan'] + '</div>';
-      html += '  <div class="card-content">Pemeriksaan: ' + data[i]['pemeriksaan'] + '</div>';
-      html += '</div>';
-
-      html += '<div class="block-title">Diagnosa</div>';
-      html += '<div class="card padding">';
-      html += '  <div class="card-content">' + data[i]['nm_penyakit'] + '</div>';
-      html += '</div>';
-
-      html += '<div class="block-title">Resep Obat</div>';
-      html += '<div class="card padding">';
-      html += '  <div class="card-content">' + data[i]['nama_brng'] + '</div>';
-      html += '</div>';
-
-      html += '<div class="block-title">Pemeriksaan Laboratorium</div>';
-      html += '<div class="card padding">';
-      if(data[i]['pemeriksaan_lab'] == '') {
-        html += '  <div class="card-content">null</div>';
-      } else {
-        html += '  <div class="card-content">' + data[i]['pemeriksaan_lab'] + '</div>';
-      }
-      html += '</div>';
-
-      html += '<div class="block-title">Pemeriksaan Radiologi</div>';
-      html += '<div class="card padding">';
-      if(data[i]['hasil_radiologi'] == '') {
-        html += '  <div class="card-content">null</div>';
-      } else {
-        html += '  <div class="card-content">' + data[i]['hasil_radiologi'] + '</div>';
-      }
-      html += '</div>';
-
-      html += '<div class="block-title">Hasil Radiologi</div>';
-      html += '<div class="card padding">';
-      if(data[i]['gambar_radiologi'] == null) {
-        html += '  <div class="card-content">' + data[i]['gambar_radiologi'] + '</div>';
-      } else {
-        html += '  <div class="card-content"><img src="' + webapps_url + 'radiologi/' + data[i]['gambar_radiologi'] + '" width="100%"/></div>';
-      }
       html += '</div>';
 
     }

@@ -7,7 +7,8 @@ const token = 'qtbexUAxzqO3M8dCOo2vDMFvgYjdUEdMLVo341'; // Token code for securi
 const startDate = -1; // Start date of day for registration
 const endDate = 7; // End date of day for registration
 const debug = 1; // Ganti menjadi 0 sebelum build di phonegap.com
-const kd_pj_bpjs = '0'; // Ganti menjadi 0 sebelum build di phonegap.com
+const kd_pj_bpjs = 0; // Ganti menjadi 0 sebelum build di phonegap.com
+const whatsapp = 6282130399806; // nomor whatsapp
 
 // Dom7
 var $$ = Dom7;
@@ -2754,6 +2755,10 @@ $$('.logout-btn').on('click', function () {
   });
 });
 
+//=================================================//
+  // Load data untuk batal booking.html               //
+//=================================================//
+
 $$(document).on('page:init', '.page[data-name="bookingdetail"]', function(e) {
   $$('.batalbooking-btn').on('click', function () {
 	 var no_rkm_medis = $$(this).attr( "data_no_rkm_medis" );
@@ -2778,4 +2783,14 @@ $$(document).on('page:init', '.page[data-name="bookingdetail"]', function(e) {
 	  });
     });
   });
+});
+
+$$(document).on('page:init', '.page[data-name="signin"]', function(e) {
+  
+  $$('.page[data-name="signin"] .whatsapp').on('click', function () {
+    window.open(`https://api.whatsapp.com/send?phone=${whatsapp}`, '_blank')
+  })
+
+  
+
 });
